@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% load static %} {% load bag_tools %}
-<!-- extra css -->
+<!-- so they stay on the same line -->
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}" />
 {% endblock %} {% block page_header %}
@@ -101,17 +101,17 @@
           </legend>
           {{ order_form.phone_number | as_crispy_field }}
           <!-- so they stay on the same line -->
-          {{ order_form.country | as_crispy_field }}
-          <!-- so they stay on the same line -->
-          {{ order_form.postcode | as_crispy_field }}
-          <!-- so they stay on the same line -->
-          {{ order_form.town_or_city | as_crispy_field }}
-          <!-- so they stay on the same line -->
           {{ order_form.street_address1 | as_crispy_field }}
           <!-- so they stay on the same line -->
           {{ order_form.street_address2 | as_crispy_field }}
           <!-- so they stay on the same line -->
+          {{ order_form.town_or_city | as_crispy_field }}
+          <!-- so they stay on the same line -->
           {{ order_form.county | as_crispy_field }}
+          <!-- so they stay on the same line -->
+          {{ order_form.postcode | as_crispy_field }}
+          <!-- so they stay on the same line -->
+          {{ order_form.country | as_crispy_field }}
           <div class="form-check form-check-inline float-right mr-0">
             {% if user.is_authenticated %}
             <label class="form-check-label" for="id-save-info"
