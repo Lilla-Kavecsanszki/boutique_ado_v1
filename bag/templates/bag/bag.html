@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% load static %} {% load bag_tools %}
-<!-- page header for the endblock -->
+<!-- so they stay on the same line -->
 {% block page_header %}
 <div class="container header-container">
   <div class="row">
@@ -35,16 +35,25 @@
           {% for item in bag_items %}
           <tr>
             <td class="p-3 w-25">
+              {% if item.product.image %}
               <img
                 class="img-fluid rounded"
                 src="{{ item.product.image.url }}"
+                alt="{{ item.product.name }}"
               />
+              {% else %}
+              <img
+                class="img-fluid rounded"
+                src="{{ MEDIA_URL }}noimage.png"
+                alt="{{ item.product.name }}"
+              />
+              {% endif %}
             </td>
             <td class="py-3">
               <p class="my-0"><strong>{{ item.product.name }}</strong></p>
               <p class="my-0">
                 <strong>Size: </strong>{% if item.product.has_sizes %}
-                <!-- so the below stays together -->
+                <!-- so they stay on the same line -->
                 {{ item.size|upper }}{% else %}N/A{% endif %}
               </p>
               <p class="my-0 small text-muted">
@@ -176,8 +185,8 @@
   </div>
 </div>
 {% endblock %} {% block postloadjs %} {{ block.super }}
-<!-- so the below stays on 1 line -->
-{% include 'products/includes/quantity_input_script.html' %}
+<!-- so they stay on the same line -->
+{% include'products/includes/quantity_input_script.html' %}
 
 <script type="text/javascript">
   // Update quantity on click
